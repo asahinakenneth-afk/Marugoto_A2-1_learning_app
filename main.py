@@ -9,13 +9,12 @@ from qss_stylesheet import *
 
 WIDTH, HEIGHT = size()
 
-## Gracias Gemini por resolverme la duda (sólo quería íconos bonitos...)
 myappid = 'JFLP.MarugotoA21.0.1' 
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 
 def run():
     app = QApplication([])
-    app.setApplicationName("Marugoto A2-1 Renshuu")
+    app.setApplicationName("Marugoto A2-1")
     app.setOrganizationName("Japanese-Freeware-learning-project") 
     app.setApplicationVersion("0.1")
     window = MainWindow()
@@ -27,7 +26,7 @@ class MainWindow(QWidget):
         super().__init__(parent=parent, flags=flags)
 
         self.is_light_mode = True
-        self.title = "Marugoto A2-1 renshuu"
+        self.title = "Marugoto A2-1"
         self.notifier = QSystemTrayIcon(self)
 
         self.config_window()
@@ -39,7 +38,7 @@ class MainWindow(QWidget):
         self.show()
 
     def config_window(self):
-        main_icon = QIcon("images/logo.ico")
+        main_icon = QIcon("data/local/images/logo.ico")
         self.notifier.setToolTip("Marugoto A2-1")
         self.setWindowTitle(self.title)
         self.setGeometry(0, 0, WIDTH, HEIGHT)
@@ -56,5 +55,5 @@ class MainWindow(QWidget):
     def event_handler(self):
         pass
 
-print("Starting Marugoto A2-1 renshuu...")
+print("Starting Marugoto A2-1...")
 run()
