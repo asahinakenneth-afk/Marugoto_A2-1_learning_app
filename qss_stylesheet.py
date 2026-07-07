@@ -1,0 +1,3 @@
+WINDOW_LIGHT = (255, 192, 184)
+WINDOW_DARK = (22, 6, 3)
+
