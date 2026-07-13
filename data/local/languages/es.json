@@ -1,0 +1,17 @@
+{"text": {
+    "title": "Marugoto A2-1 App de Aprendizaje",
+    "description": "Una aplicación para el curso de Marugoto A2-1 en japonés"},
+
+"verbs" : {
+    "1" : "hacer",
+    "2" : "llegar tarde",
+    "3" : "esperar"
+},
+
+"button": {
+    "start": "Comenzar",
+    "settings": "Configuración",
+    "exit": "Salir"
+}
+}
+    

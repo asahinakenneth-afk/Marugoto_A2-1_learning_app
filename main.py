@@ -5,6 +5,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon #, QFontDatabase, 
 # from PyQt5.QtMultimedia import QSound
 from pyautogui import size
+import json
 from qss_stylesheet import *
 
 WIDTH, HEIGHT = size()
@@ -26,9 +27,10 @@ class MainWindow(QWidget):
         super().__init__(parent=parent, flags=flags)
 
         self.is_light_mode = True
-        self.title = "Marugoto A2-1"
+        self.language = "en"
         self.notifier = QSystemTrayIcon(self)
 
+        self.set_language()
         self.config_window()
         self.event_handler()
         self.welcome_screen()
@@ -48,6 +50,19 @@ class MainWindow(QWidget):
             self.setStyleSheet(f"background-color: rgb{WINDOW_DARK};")
         self.setWindowIcon(main_icon)
         self.notifier.setIcon(main_icon)
+
+    def set_language(self):
+        language_archive = f"data/local/languages/{self.language}.json"
+        
+        # 1. Abrimos y cargamos el contenido del JSON
+        with open(language_archive, 'r', encoding='utf-8') as archivo:
+            language = json.load(archivo)
+        
+        # 2. Ahora sí, accedemos a los datos como un diccionario
+        self.title = language["text"]["title"]
+        self.description = language["text"]["description"]
+
+        print("Language set to:", self.language, "loaded properly")
 
     def welcome_screen(self):
         pass

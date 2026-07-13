@@ -1,0 +1,23 @@
+{
+    "1": {
+      "kanji": "する",
+      "kana": "する",
+      "romaji": "suru",
+      "group": 3,
+      "masu_form": "します"
+    },
+    "2": {
+      "kanji": "遅れる",
+      "kana": "おくれる",
+      "romaji": "okureru",
+      "group": 2,
+      "masu_form": "遅れます"
+    },
+    "3":{
+      "kanji": "待つ",
+      "kana": "まつ",
+      "romaji": "matsu",
+      "group": 1,
+      "masu_form": "待ちます"
+    }
+}

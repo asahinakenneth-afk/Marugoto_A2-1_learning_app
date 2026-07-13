@@ -1,0 +1,16 @@
+{"text": {
+    "title": "Marugoto A2-1 Learning App",
+    "description": "A learning application for the Marugoto A2-1 course."},
+
+"verbs" : {
+    "1" : "to do",
+    "2" : "to be late",
+    "3" : "to wait"
+},
+
+"button": {
+    "start": "Start",
+    "settings": "Settings",
+    "exit": "Exit"
+}
+}
