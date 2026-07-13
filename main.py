@@ -1,8 +1,8 @@
 import sys
 import ctypes
-from PyQt5.QtWidgets import QApplication, QWidget, QSystemTrayIcon #QPushButton, QLabel, QVBoxLayout, QHBoxLayout, 
+from PyQt5.QtWidgets import QApplication, QWidget, QSystemTrayIcon, QPushButton, QLabel, QVBoxLayout, QHBoxLayout
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QIcon #, QFontDatabase, 
+from PyQt5.QtGui import QIcon, QFontDatabase
 # from PyQt5.QtMultimedia import QSound
 from pyautogui import size
 import json
@@ -27,8 +27,15 @@ class MainWindow(QWidget):
         super().__init__(parent=parent, flags=flags)
 
         self.is_light_mode = True
-        self.language = "en"
         self.notifier = QSystemTrayIcon(self)
+        QFontDatabase.addApplicationFont("data/local/fonts/April.ttf")
+
+        self.config_file = "data/local/config.json"
+        with open(self.config_file, 'r', encoding='utf-8') as archivo:
+            config = json.load(archivo)
+        
+        self.language = config.get("language", "en")
+        self.is_light_mode = config.get("is_light_mode", True)
 
         self.set_language()
         self.config_window()
@@ -65,10 +72,16 @@ class MainWindow(QWidget):
         print("Language set to:", self.language, "loaded properly")
 
     def welcome_screen(self):
-        pass
+        self.description = QLabel(self.description, self)
+        self.description.setStyleSheet(TEXT_STYLE_LIGHT)
+
+        main_Layout = QVBoxLayout()
+        main_Layout.addWidget(self.description, alignment=Qt.AlignCenter)
+        self.setLayout(main_Layout)
     
     def event_handler(self):
         pass
 
 print("Starting Marugoto A2-1...")
+
 run()

@@ -6,7 +6,9 @@ BUTTON_HOVER_LIGHT = (255, 120, 110)
 BUTTON_FONT = ""
 
 TEXT_COLOR_LIGHT = (0, 0, 0)
-TEXT_FONT = "data/local/fonts/April.ttf"
+TEXT_FONT = "April"
+
+TEXT_STYLE_LIGHT = f"""color: rgb{TEXT_COLOR_LIGHT}; font-size: 12px; font-family: {TEXT_FONT};"""
 
 BUTTON_STYLE_LIGHT = f"""
     QPushButton {{
