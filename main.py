@@ -7,7 +7,7 @@ from PyQt5.QtGui import QIcon
 from pyautogui import size
 import json
 from qss_stylesheet import *
-from conjugation_func import *
+from conjugation import *
 
 WIDTH, HEIGHT = size()
 
