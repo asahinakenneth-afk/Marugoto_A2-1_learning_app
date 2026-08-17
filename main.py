@@ -7,6 +7,7 @@ from PyQt5.QtGui import QIcon, QFontDatabase
 from pyautogui import size
 import json
 from qss_stylesheet import *
+from conjugation_func import *
 
 WIDTH, HEIGHT = size()
 
@@ -28,7 +29,8 @@ class MainWindow(QWidget):
 
         self.is_light_mode = True
         self.notifier = QSystemTrayIcon(self)
-        QFontDatabase.addApplicationFont("data/local/fonts/April.ttf")
+        self.text_id = QFontDatabase.addApplicationFont("data/local/fonts/April.ttf")
+        self.titles_id = QFontDatabase.addApplicationFont("data/local/fonts/SuperWarming.ttf")
 
         self.config_file = "data/local/config.json"
         with open(self.config_file, 'r', encoding='utf-8') as archivo:
@@ -49,7 +51,7 @@ class MainWindow(QWidget):
     def config_window(self):
         main_icon = QIcon("data/local/images/logo.ico")
         self.notifier.setToolTip("Marugoto A2-1")
-        self.setWindowTitle(self.title)
+        self.setWindowTitle(self.title_tt)
         self.setGeometry(0, 0, WIDTH, HEIGHT)
         if self.is_light_mode:
             self.setStyleSheet(f"background-color: rgb{WINDOW_LIGHT};")
@@ -66,16 +68,19 @@ class MainWindow(QWidget):
             language = json.load(archivo)
         
         # 2. Ahora sí, accedemos a los datos como un diccionario
-        self.title = language["text"]["title"]
-        self.description = language["text"]["description"]
+        self.title_tt = language["text"]["title"]
+        self.description_txt = language["text"]["description"]
 
         print("Language set to:", self.language, "loaded properly")
 
     def welcome_screen(self):
-        self.description = QLabel(self.description, self)
+        self.title_text = QLabel(self.title_tt, self)
+        self.title_text.setStyleSheet(TITLES_STYLE_LIGHT)
+        self.description = QLabel(self.description_txt, self)
         self.description.setStyleSheet(TEXT_STYLE_LIGHT)
 
         main_Layout = QVBoxLayout()
+        main_Layout.addWidget(self.title_text, alignment=Qt.AlignBottom)
         main_Layout.addWidget(self.description, alignment=Qt.AlignCenter)
         self.setLayout(main_Layout)
     

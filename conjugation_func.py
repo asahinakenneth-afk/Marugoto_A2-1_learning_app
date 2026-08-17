@@ -1,4 +1,5 @@
 import json
+from random import randint
 
 '''To initiate properly, the program checks if a verb can be accessed in the glossary and conjugates it
     and if it can, it returns the verb's information and let's the program process normally
@@ -7,12 +8,12 @@ import json
 
 config_file_path = "data/local/config.json" ## CONFIG FILE PATH
 
-with open(config_file_path, 'r', encoding='utf-8') as config_file: ## OPENS IT
+with open(config_file_path, 'r', encoding='utf-8') as config_file: ## OPENS IT TO CHECK ON USER PREFERENCES
     config_data = json.load(config_file)
-    language = config_data.get("language", "en")  # Default to "en" if not found
+    language = config_data.get("language", "en")  # Default to "english" if not found
 
 glossary_path = "data/content/glossary.json" 
-language_path = f"data/local/languages/{language}.json" ## SET LANGUAGE
+language_path = f"data/local/languages/{language}.json" ## SETS LANGUAGE FOR TRANSLATION
 
 with open(glossary_path, 'r', encoding='utf-8') as file:
     glossary = json.load(file)
@@ -28,7 +29,7 @@ def get_verb_info(verb_id, glossary, language_data, language):
     '''
     Here you get the information of the verb you want to use, based on the verb_id,
     the dedicated glossary and dynamic language.
-    It returns a dictionary with the verb's information (meaning, kanji, kana, romanji, group
+    It returns a dictionary with the verb's information (meaning, dict_form, dict_form, romanji, group
     dictionary form, masu form, etc...)
     This is mainly used to display the verb's information in the GUI,
     and also to get the verb's conjugation forms (check verb_to_te function).
@@ -44,11 +45,10 @@ def get_verb_info(verb_id, glossary, language_data, language):
     verb_meaning = language_data["verbs"][id]
     
     verb_info = {
-        "kanji": verb_data.get("kanji"),
-        "kana": verb_data.get("kana"),
+        "dict_form": verb_data.get("dict"),
         "romaji": verb_data.get("romaji"),
         "group": verb_data.get("group"),
-        "masu_form": verb_data.get("masu_form"),
+        "masu_form": verb_data.get("masu"),
         "meaning": verb_meaning
     }
 
@@ -70,50 +70,41 @@ def verb_to_te(verb_id, glossary, language_data, language):
         return None
 
     group = verb_info["group"]
-    kanji = verb_info["kanji"]
-    kana = verb_info["kana"]
+    dict_form = verb_info["dict_form"]
 
     if group == 3: #IRREGULAR
-        if kana == "する":
+        dict_form = verb_info["dict_form"]
+        if dict_form == "する":
             te_form = "して"
-            kanji_te = "して"
-        elif kana == "くる":
-            te_form = "きて"
-            kanji_te = "来て"  
+        elif dict_form == "くる":
+            te_form = "来て"
         else:
-            print(f"Unexpected irregular verb: {kana}")
+            print(f"Unexpected irregular verb: {dict_form}")
             return None
 
     elif group == 2: #ICHIDAN
-        te_form = kana[:-1] + "て"
-        kanji_te = kanji[:-1] + "て"
+        te_form = dict_form[:-1] + "て"
 
     elif group == 1:  #GODAN
-        if kana == "行く":
+        if dict_form == "行く":
             te_form = "行って"
-            kanji_te = "行って"
-        elif kana.endswith("う") or kana.endswith("つ") or kana.endswith("る"):
-            kanji_te = kanji[:-1] + "って"
-            te_form = kana[:-1] + "って"
-        elif kana.endswith("む") or kana.endswith("ぶ") or kana.endswith("ぬ"):
-            kanji_te = kanji[:-1] + "んで"
-            te_form = kana[:-1] + "んで"
-        elif kana.endswith("く"):
-            kanji_te = kanji[:-1] + "いて"
-            te_form = kana[:-1] + "いて"
-        elif kana.endswith("ぐ"):
-            kanji_te = kanji[:-1] + "いで"
-            te_form = kana[:-1] + "いで"
-        elif kana.endswith("す"):
-            kanji_te = kanji[:-1] + "して"
-            te_form = kana[:-1] + "して"
+        elif dict_form.endswith("う") or dict_form.endswith("つ") or dict_form.endswith("る"):
+            te_form = dict_form[:-1] + "って"
+        elif dict_form.endswith("む") or dict_form.endswith("ぶ") or dict_form.endswith("ぬ"):
+            te_form = dict_form[:-1] + "んで"
+        elif dict_form.endswith("く"):
+            te_form = dict_form[:-1] + "いて"
+        elif dict_form.endswith("ぐ"):
+            te_form = dict_form[:-1] + "いで"
+        elif dict_form.endswith("す"):
+            te_form = dict_form[:-1] + "して"
         else:
-            print(f"Unexpected ending for Godan verb: {kana}")
+            print(f"Unexpected ending for Godan verb: {dict_form}")
             return None
         
-    # print(f"The te-form of {kanji} ({kana}) is: {kanji_te} ({te_form})")
+    # print(f"The te-form of {dict_form} ({dict_form}) is: {te_form} ({te_form})")
 
-    return te_form, kanji_te
+    return te_form
 
 def verb_to_ta(verb_id, glossary, language_data, language):
     '''
@@ -121,7 +112,7 @@ def verb_to_ta(verb_id, glossary, language_data, language):
     transforms it to te form, then to ta form (or informal past form) of the verb.
     It returns the ta-form of the verb.
     '''
-    te_form, kanji_te = verb_to_te(verb_id, glossary, language_data, language)
+    te_form = verb_to_te(verb_id, glossary, language_data, language)
     
     if not te_form:
         print(f"Cannot conjugate verb ID {verb_id} to ta-form because te-form was not found.")
@@ -130,17 +121,15 @@ def verb_to_ta(verb_id, glossary, language_data, language):
     # Convert te-form to ta-form
     if te_form.endswith("て"):
         ta_form = te_form[:-1] + "た"
-        kanji_ta = kanji_te[:-1] + "た"
     elif te_form.endswith("で"):
         ta_form = te_form[:-1] + "だ"
-        kanji_ta = kanji_te[:-1] + "だ"
     else:
         print(f"Unexpected ending for te-form: {te_form}")
         return None
 
-    # print(f"The ta-form of {kanji_te} ({te_form}) is: {kanji_ta} ({ta_form})")
+    # print(f"The ta-form of {te_form} ({te_form}) is: {dict_form_ta} ({ta_form})")
 
-    return ta_form, kanji_ta
+    return ta_form
 
 def masu_to_past(verb_id, glossary, language_data, language):
     '''
@@ -158,13 +147,15 @@ def masu_to_past(verb_id, glossary, language_data, language):
 
     if masu.endswith("ます"):
         past_masu_form = masu[:-2] + "ました"
+    else:
+        print(f"Cannot conjugate verb ID {verb_id} because of an unexpected error.")
 
     return past_masu_form
 
 def verb_to_tai(verb_id, glossary, language_data, language):
     '''
     This function takes a verb_id, the glossary and the language as input,
-    and returns the tai-form of the verb (or to wish form)
+    and returns the tai-form of the verb (or to-wish form)
     It uses the verb's masu form to determine its conjugation.
     '''
     verb_info = get_verb_info(verb_id, glossary, language_data, language)
@@ -177,6 +168,8 @@ def verb_to_tai(verb_id, glossary, language_data, language):
 
     if masu.endswith("ます"):
         tai_form = masu[:-2] + "たい"
+    else:
+        print(f"Cannot conjugate verb ID {verb_id} because of an unexpected error.")
 
     return tai_form
 
@@ -198,9 +191,11 @@ def masu_to_negative(verb_id, glossary, language_data, language):
     masu = verb_info["masu_form"]
 
     if masu.endswith("ます"):
-        negative_masu_form = masu[:-2] + "ません"
+        neg_masu_form = masu[:-2] + "ません"
+    else:
+        print(f"Cannot conjugate verb ID {verb_id} because of an unexpected error.")
 
-    return negative_masu_form
+    return neg_masu_form
 
 def mashita_to_negative(verb_id, glossary, language_data, language):
     '''
@@ -217,17 +212,18 @@ def mashita_to_negative(verb_id, glossary, language_data, language):
     past_masu = masu_to_past(verb_id, glossary, language_data, language)
 
     if past_masu.endswith("ました"):
-        negative_past_masu_form = past_masu[:-3] + "ませんでした"
+        negpast_masu_form = past_masu[:-3] + "ませんでした"
 
-    return negative_past_masu_form
+    return negpast_masu_form
 
 print("Testing verb conjugation functions...")
-print(get_verb_info(2, glossary, language_data, language))
-print(verb_to_te(2, glossary, language_data, language))
-print(verb_to_ta(2, glossary, language_data, language))
-print(verb_to_tai(2, glossary, language_data, language))
-print(masu_to_negative(2, glossary, language_data, language))
-print(masu_to_past(2, glossary, language_data, language))
-print(mashita_to_negative(2, glossary, language_data, language))
+n = randint(1, len(glossary))
+print(get_verb_info(n, glossary, language_data, language))
+print(verb_to_te(n, glossary, language_data, language))
+print(verb_to_ta(n, glossary, language_data, language))
+print(verb_to_tai(n, glossary, language_data, language))
+print(masu_to_negative(n, glossary, language_data, language))
+print(masu_to_past(n, glossary, language_data, language))
+print(mashita_to_negative(n, glossary, language_data, language))
 
 print("functions.py loaded successfully.")

@@ -4,8 +4,27 @@
 
 "verbs" : {
     "1" : "hacer",
-    "2" : "llegar tarde",
-    "3" : "esperar"
+    "2" : "regresar",
+    "3" : "ser",
+    "4" : "ir",
+    "5" : "comer",
+    "6" : "beber",
+    "7" : "mirar",
+    "8" : "escuchar",
+    "9" : "hablar",
+    "10" : "leer",
+    "11" : "escribir",
+    "12" : "comprar",
+    "13" : "dormir",
+    "14" : "regresar a casa",
+    "15" : "encontrarse",
+    "16" : "llegar tarde",
+    "17" : "esperar",
+    "18" : "vivir (en un lugar)",
+    "19" : "trabajar",
+    "20" : "preparar",
+    "21" : "convertirse",
+    "22" : "perderse"
 },
 
 "button": {

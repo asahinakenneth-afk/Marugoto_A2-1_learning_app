@@ -8,7 +8,12 @@ BUTTON_FONT = ""
 TEXT_COLOR_LIGHT = (0, 0, 0)
 TEXT_FONT = "April"
 
-TEXT_STYLE_LIGHT = f"""color: rgb{TEXT_COLOR_LIGHT}; font-size: 12px; font-family: {TEXT_FONT};"""
+TITLES_COLOR_LIGHT = (0, 0, 0)
+TITLES_FONT = "SuperWarming"
+
+TEXT_STYLE_LIGHT = f"""color: rgb{TEXT_COLOR_LIGHT}; font-size: 12px; font-family: {TEXT_FONT}"""
+
+TITLES_STYLE_LIGHT = f"""color: rgb{TEXT_COLOR_LIGHT}; font-size: 32px; font-family: {TITLES_FONT}"""
 
 BUTTON_STYLE_LIGHT = f"""
     QPushButton {{
