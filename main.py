@@ -69,19 +69,31 @@ class MainWindow(QWidget):
         # then you set variables for the text you want to use in the GUI! completely dynamic :3
         self.title_tt = language["text"]["title"]
         self.description_txt = language["text"]["description"]
+        self.start_btn = language["button"]["start"]
 
         print("Language set to:", self.language, "loaded properly")
 
     def welcome_screen(self):
         self.title_text = QLabel(self.title_tt, self)
-        self.title_text.setStyleSheet(self.titles_style)
         self.description = QLabel(self.description_txt, self)
-        self.description.setStyleSheet(self.text_style)
+        self.start_button = QPushButton(self.start_btn, self)
+
+        self.apply_style(self.title_text, self.titles_style)
+        self.apply_style(self.description, self.text_style)
+        self.apply_style(self.start_button, self.button_style)
 
         main_Layout = QVBoxLayout()
         main_Layout.addWidget(self.title_text, alignment=Qt.AlignBottom)
         main_Layout.addWidget(self.description, alignment=Qt.AlignCenter)
+        main_Layout.addWidget(self.start_button, alignment=Qt.AlignCenter)
         self.setLayout(main_Layout)
+
+
+    def apply_style(self, object, style):
+        object.setStyleSheet(style)
+        if isinstance(object, QPushButton):
+            object.setFixedSize(240, 52)
+        
 
     def event_handler(self):
         pass

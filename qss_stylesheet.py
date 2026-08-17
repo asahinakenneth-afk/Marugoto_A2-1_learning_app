@@ -6,9 +6,12 @@ def get_stylesheet(is_light_mode):
     ## Okay I've made my research and the problem was about my procedure HAAHAHAA
     text_id = QFontDatabase.addApplicationFont("data/local/fonts/April.ttf")
     titles_id = QFontDatabase.addApplicationFont("data/local/fonts/SuperWarming.ttf")
+    buttons_id = QFontDatabase.addApplicationFont("data/local/fonts/DueMining.otf")
     TEXT_FONT = QFontDatabase.applicationFontFamilies(text_id)[0] if text_id != -1 else "Arial"
     TITLES_FONT = QFontDatabase.applicationFontFamilies(titles_id)[0] if titles_id != -1 else "Arial"
-    print("Fonts loaded properly:", TEXT_FONT, TITLES_FONT)
+    BUTTON_FONT = QFontDatabase.applicationFontFamilies(buttons_id)[0] if buttons_id != -1 else "Arial"
+
+    print("Fonts loaded properly:", TEXT_FONT, TITLES_FONT, BUTTON_FONT)
 
     if is_light_mode:
         titles_style = f"""color: rgb{TITLES_COLOR_LIGHT}; font-size: 52px; font-family: "{TITLES_FONT}" """
@@ -20,23 +23,19 @@ def get_stylesheet(is_light_mode):
         background-color: rgb{BUTTON_LIGHT};
         color: rgb{TEXT_COLOR_LIGHT};
         font-family: "{BUTTON_FONT}";
-        font-size: 32px;
-        font-weight: bold;
-        border-style: solid;
-        border: 4px solid #000000;
-        border-top: 4px solid #ffffff;
-        border-left: 4px solid #ffffff;
-        border-bottom: 4px solid #FF7898;
-        border-right: 4px solid #FF7898;
+        font-size: 36px;
+        border-radius: 20px;
+        border-style: dotted;
+        border-width: 4px;
+        border-color: #F26B87;
                     }}
                 QPushButton:hover {{
         background-color: rgb{BUTTON_HOVER_LIGHT};
+        border-color: #F05143;
                     }}
                 QPushButton:pressed {{
-        border-top: 4px solid #FF7898;
-        border-left: 4px solid #FF7898;
-        border-bottom: 4px solid #ffffff;
-        border-right: 4px solid #ffffff;
+        background-color: rgb{BUTTON_PRESSED_LIGHT};
+        border-color: #FF857D;
                     }}
                 """
 
@@ -48,7 +47,7 @@ WINDOW_DARK = (22, 6, 3)
 
 BUTTON_LIGHT = (255, 143, 168)
 BUTTON_HOVER_LIGHT = (255, 120, 110)
-BUTTON_FONT = ""
+BUTTON_PRESSED_LIGHT = (255, 100, 90)
 
 TEXT_COLOR_LIGHT = (0, 0, 0)
 
