@@ -2,7 +2,7 @@ import sys
 import ctypes
 from PyQt5.QtWidgets import QApplication, QWidget, QSystemTrayIcon, QPushButton, QLabel, QVBoxLayout, QHBoxLayout
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QIcon, QFontDatabase
+from PyQt5.QtGui import QIcon
 # from PyQt5.QtMultimedia import QSound
 from pyautogui import size
 import json
@@ -29,8 +29,6 @@ class MainWindow(QWidget):
 
         self.is_light_mode = True
         self.notifier = QSystemTrayIcon(self)
-        self.text_id = QFontDatabase.addApplicationFont("data/local/fonts/April.ttf")
-        self.titles_id = QFontDatabase.addApplicationFont("data/local/fonts/SuperWarming.ttf")
 
         self.config_file = "data/local/config.json"
         with open(self.config_file, 'r', encoding='utf-8') as archivo:
@@ -40,6 +38,7 @@ class MainWindow(QWidget):
         self.is_light_mode = config.get("is_light_mode", True)
 
         self.set_language()
+        self.titles_style, self.text_style, self.button_style = get_stylesheet(self.is_light_mode)
         self.config_window()
         self.event_handler()
         self.welcome_screen()
@@ -63,11 +62,11 @@ class MainWindow(QWidget):
     def set_language(self):
         language_archive = f"data/local/languages/{self.language}.json"
         
-        # 1. Abrimos y cargamos el contenido del JSON
+        # Open and load the JSON file for the language here
         with open(language_archive, 'r', encoding='utf-8') as archivo:
             language = json.load(archivo)
         
-        # 2. Ahora sí, accedemos a los datos como un diccionario
+        # then you set variables for the text you want to use in the GUI! completely dynamic :3
         self.title_tt = language["text"]["title"]
         self.description_txt = language["text"]["description"]
 
@@ -75,18 +74,17 @@ class MainWindow(QWidget):
 
     def welcome_screen(self):
         self.title_text = QLabel(self.title_tt, self)
-        self.title_text.setStyleSheet(TITLES_STYLE_LIGHT)
+        self.title_text.setStyleSheet(self.titles_style)
         self.description = QLabel(self.description_txt, self)
-        self.description.setStyleSheet(TEXT_STYLE_LIGHT)
+        self.description.setStyleSheet(self.text_style)
 
         main_Layout = QVBoxLayout()
         main_Layout.addWidget(self.title_text, alignment=Qt.AlignBottom)
         main_Layout.addWidget(self.description, alignment=Qt.AlignCenter)
         self.setLayout(main_Layout)
-    
+
     def event_handler(self):
         pass
 
 print("Starting Marugoto A2-1...")
-
 run()
