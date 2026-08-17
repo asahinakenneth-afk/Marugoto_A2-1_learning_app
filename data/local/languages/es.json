@@ -28,7 +28,7 @@
 },
 
 "button": {
-    "start": "Comenzar",
+    "lessons": "Lecciones",
     "settings": "Configuración",
     "exit": "Salir"
 }

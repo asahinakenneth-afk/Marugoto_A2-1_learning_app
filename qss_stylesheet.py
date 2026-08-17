@@ -23,7 +23,7 @@ def get_stylesheet(is_light_mode):
         background-color: rgb{BUTTON_LIGHT};
         color: rgb{TEXT_COLOR_LIGHT};
         font-family: "{BUTTON_FONT}";
-        font-size: 36px;
+        font-size: 32px;
         border-radius: 20px;
         border-style: dotted;
         border-width: 4px;

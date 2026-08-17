@@ -41,7 +41,7 @@ class MainWindow(QWidget):
         self.titles_style, self.text_style, self.button_style = get_stylesheet(self.is_light_mode)
         self.config_window()
         self.event_handler()
-        self.welcome_screen()
+        self.main_menu()
 
         self.notifier.show()
 
@@ -69,34 +69,37 @@ class MainWindow(QWidget):
         # then you set variables for the text you want to use in the GUI! completely dynamic :3
         self.title_tt = language["text"]["title"]
         self.description_txt = language["text"]["description"]
-        self.start_btn = language["button"]["start"]
+        self.lessons_btn = language["button"]["lessons"]
 
         print("Language set to:", self.language, "loaded properly")
 
-    def welcome_screen(self):
+    def main_menu(self):
         self.title_text = QLabel(self.title_tt, self)
         self.description = QLabel(self.description_txt, self)
-        self.start_button = QPushButton(self.start_btn, self)
+        self.lessons_button = QPushButton(self.lessons_btn, self)
 
         self.apply_style(self.title_text, self.titles_style)
         self.apply_style(self.description, self.text_style)
-        self.apply_style(self.start_button, self.button_style)
+        self.apply_style(self.lessons_button, self.button_style)
 
         main_Layout = QVBoxLayout()
-        main_Layout.addWidget(self.title_text, alignment=Qt.AlignBottom)
+        btn_layout = QVBoxLayout()
+
+        main_Layout.addWidget(self.title_text, alignment=Qt.AlignCenter)
         main_Layout.addWidget(self.description, alignment=Qt.AlignCenter)
-        main_Layout.addWidget(self.start_button, alignment=Qt.AlignCenter)
+        main_Layout.addWidget(self.lessons_button, alignment=Qt.AlignCenter)
+
         self.setLayout(main_Layout)
 
 
     def apply_style(self, object, style):
         object.setStyleSheet(style)
-        if isinstance(object, QPushButton):
+        if isinstance(object, QPushButton): ## This is very useful! it checks if an object is certain class! 
             object.setFixedSize(240, 52)
-        
 
     def event_handler(self):
         pass
+        #self.start_button.clicked.connect(self.start_button_clicked)
 
 print("Starting Marugoto A2-1...")
 run()

@@ -28,7 +28,7 @@
 },
 
 "button": {
-    "start": "Start",
+    "lessons": "Lessons",
     "settings": "Settings",
     "exit": "Exit"
 }
