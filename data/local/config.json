@@ -1,4 +1,6 @@
 {
-    "language" : "es",
-    "is_light_mode" : true
+    "language" : "en",
+    "is_light_mode" : true,
+    "due_date" : "2026-08-18",
+    "due_time" : "9:00"
 }
