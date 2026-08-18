@@ -46,7 +46,6 @@ def get_verb_info(verb_id, glossary, language_data, language):
     
     verb_info = {
         "dict_form": verb_data.get("dict"),
-        "romaji": verb_data.get("romaji"),
         "group": verb_data.get("group"),
         "masu_form": verb_data.get("masu"),
         "meaning": verb_meaning
