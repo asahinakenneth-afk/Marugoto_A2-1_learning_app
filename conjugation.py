@@ -2,11 +2,11 @@ import json
 from random import randint
 
 '''To initiate properly, the program checks if a verb can be accessed in the glossary and conjugates it
-    and if it can, it returns the verb's information and let's the program process normally
+    and if it can, it returns the verb's information, stem forms and let's the program process normally
     if it can't, it returns an error message and the program stops.
 '''
 
-config_file_path = "data/local/config.json" ## CONFIG FILE PATH
+config_file_path = "data/local/config.json" ## CONFIGURATION FILE
 
 with open(config_file_path, 'r', encoding='utf-8') as config_file: ## OPENS IT TO CHECK ON USER PREFERENCES
     config_data = json.load(config_file)
@@ -46,7 +46,6 @@ def get_verb_info(verb_id, glossary, language_data, language):
     
     verb_info = {
         "dict_form": verb_data.get("dict"),
-        "romaji": verb_data.get("romaji"),
         "group": verb_data.get("group"),
         "masu_form": verb_data.get("masu"),
         "meaning": verb_meaning

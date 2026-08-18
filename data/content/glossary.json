@@ -1,156 +1,140 @@
 {
-  "1": { 
-    "romaji": "suru",
-    "dict": "する",
-    "kana": "する",
-    "group": 3,
-    "masu": "します"
-  },
-  "2": {
-    "romaji": "kuru",
-    "dict": "来る",
-    "kana": "く",
-    "group": 3,
-    "masu": "来ます"
-  },
-  "3": {
-    "romaji": "iru",
-    "dict": "居る",
-    "kana": "い",
-    "group": 2,
-    "masu": "います"
-  },
-  "4": {
-    "romaji": "iku",
-    "dict": "行く",
-    "kana": "い",
-    "group": 1,
-    "masu": "行きます"
-  },
-  "5": {
-    "romaji": "taberu",
-    "dict": "食べる",
-    "kana": "た",
-    "group": 2,
-    "masu": "食べます"
-  },
-  "6": {
-    "romaji": "nomu",
-    "dict": "飲む",
-    "kana": "の",
-    "group": 1,
-    "masu": "飲みます"
-  },
-  "7": {
-    "romaji": "miru",
-    "dict": "見る",
-    "kana": "み",
-    "group": 2,
-    "masu": "見ます"
-  },
-  "8": {
-    "romaji": "kiku",
-    "dict": "聞く",
-    "kana": "き",
-    "group": 1,
-    "masu": "聞きます"
-  },
-  "9": {
-    "romaji": "hanasu",
-    "dict": "話す",
-    "kana": "はな",
-    "group": 1,
-    "masu": "話します"
-  },
-  "10": {
-    "romaji": "yomu",
-    "dict": "読む",
-    "kana": "よ",
-    "group": 1,
-    "masu": "読みます"
-  },
-  "11": {
-    "romaji": "kaku",
-    "dict": "書く",
-    "kana": "か",
-    "group": 1,
-    "masu": "書きます"
-  },
-  "12": {
-    "romaji": "kau",
-    "dict": "買う",
-    "kana": "か",
-    "group": 1,
-    "masu": "買います"
-  },
-  "13": {
-    "romaji": "neru",
-    "dict": "寝る",
-    "kana": "ね",
-    "group": 2,
-    "masu": "寝ます"
-  },
-  "14": {
-    "romaji": "kaeru",
-    "dict": "帰る",
-    "kana": "かえ",
-    "group": 1,
-    "masu": "帰ります"
-  },
-  "15": {
-    "romaji": "au",
-    "dict": "会う",
-    "kana": "あ",
-    "group": 1,
-    "masu": "会います"
-  },
-  "16": {
-    "romaji": "okureru",
-    "dict": "遅れる",
-    "kana": "おく",
-    "group": 2,
-    "masu": "遅れます"
-  },
-  "17":{
-    "romaji": "matsu",
-    "dict": "待つ",
-    "kana": "ま",
-    "group": 1,
-    "masu": "待ちます"
-  },
-  "18": {
-    "romaji": "sumu",
-    "dict": "住む",
-    "kana": "す",
-    "group": 1,
-    "masu": "住みます"
-  },
-  "19": {
-    "romaji": "hataraku",
-    "dict": "働く",
-    "kana": "はたら",
-    "group": 1,
-    "masu": "働きます"
-  },
-  "20": {
-    "romaji": "tsukuru",
-    "dict": "作る",
-    "kana": "つく",
-    "group": 1,
-    "masu": "作ります"
-  },
-  "21": {
-    "romaji": "naru",
-    "dict": "成る",
-    "kana": "な",
-    "group": 1,
-    "masu": "成ります"
-  },
-  "22": {
-    "romaji": "mayou",
-    "dict": "迷う",
-    "kana": "まよ",
-    "group": 1,
-    "masu": "迷います"
-  }
+    "1": {
+        "dict": "する",
+        "kana": "する",
+        "group": 3,
+        "masu": "します"
+    },
+    "2": {
+        "dict": "来る",
+        "kana": "く",
+        "group": 3,
+        "masu": "きます"
+    },
+    "3": {
+        "dict": "居る",
+        "kana": "い",
+        "group": 2,
+        "masu": "居ます"
+    },
+    "4": {
+        "dict": "行く",
+        "kana": "い",
+        "group": 1,
+        "masu": "行きます"
+    },
+    "5": {
+        "dict": "食べる",
+        "kana": "た",
+        "group": 2,
+        "masu": "食べます"
+    },
+    "6": {
+        "dict": "飲む",
+        "kana": "の",
+        "group": 1,
+        "masu": "飲みます"
+    },
+    "7": {
+        "dict": "見る",
+        "kana": "み",
+        "group": 2,
+        "masu": "見ます"
+    },
+    "8": {
+        "dict": "聞く",
+        "kana": "き",
+        "group": 1,
+        "masu": "聞きます"
+    },
+    "9": {
+        "dict": "話す",
+        "kana": "はな",
+        "group": 1,
+        "masu": "話します"
+    },
+    "10": {
+        "dict": "読む",
+        "kana": "よ",
+        "group": 1,
+        "masu": "読みます"
+    },
+    "11": {
+        "dict": "書く",
+        "kana": "か",
+        "group": 1,
+        "masu": "書きます"
+    },
+    "12": {
+        "dict": "買う",
+        "kana": "か",
+        "group": 1,
+        "masu": "買います"
+    },
+    "13": {
+        "dict": "寝る",
+        "kana": "ね",
+        "group": 2,
+        "masu": "寝ます"
+    },
+    "14": {
+        "dict": "帰る",
+        "kana": "かえ",
+        "group": 1,
+        "masu": "帰ります"
+    },
+    "15": {
+        "dict": "会う",
+        "kana": "あ",
+        "group": 1,
+        "masu": "会います"
+    },
+    "16": {
+        "dict": "遅れる",
+        "kana": "おく",
+        "group": 2,
+        "masu": "遅れます"
+    },
+    "17": {
+        "dict": "待つ",
+        "kana": "ま",
+        "group": 1,
+        "masu": "待ちます"
+    },
+    "18": {
+        "dict": "住む",
+        "kana": "す",
+        "group": 1,
+        "masu": "住みます"
+    },
+    "19": {
+        "dict": "働く",
+        "kana": "はたら",
+        "group": 1,
+        "masu": "働きます"
+    },
+    "20": {
+        "dict": "作る",
+        "kana": "つく",
+        "group": 1,
+        "masu": "作ります"
+    },
+    "21": {
+        "dict": "成る",
+        "kana": "な",
+        "group": 1,
+        "masu": "成ります"
+    },
+    "22": {
+        "dict": "迷う",
+        "kana": "まよ",
+        "group": 1,
+        "masu": "迷います"
+    },
+    "23": {
+        "dict": "見える",
+        "kana": "み",
+        "group": 2,
+        "masu": "見えます"
+    }
 }

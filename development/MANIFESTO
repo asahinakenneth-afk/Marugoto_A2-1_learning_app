@@ -1,0 +1,80 @@
+==============================================================================
+==============================================================================
+
+        JAPANESE FREEWARE LEARNING PROJECT : MARUGOTO A21 MANIFESTO
+
+==============================================================================
+==============================================================================
+
+Hi there! if you're seeing this, probably it's because you're very curious 
+about programs structure or you're thinking about joining our team. If its the
+last case, don't forget to contact us through our discord server, we will be
+glad to incorporate you! ;) 
+    In this document we set up the bases of the project, its structure and
+    the objectives, alongside other important things.
+
+"Under the DSD principle: Download the app, Share it with your friends, 
+Develop with us. Any help is useful, even if small <3"
+
+------------------------------------------
+1- PROJECT MISSIONS
+------------------------------------------
+    - *Build  a lightweight, completely free tool to help self-learners* or people
+who study under the Marugoto method to master Japanese (grammar structures,
+verb conjugations, vocabulary, kanji and kana).
+    - *Keep the experience free of ads, distractions and paywalls* that oftenly
+difficult students' learning process.
+    - The project was created as a *review tool*, despite this, we encourage the
+explanation inside the lessons to allow low-resources persons (who don't
+have access to a japanese academy) to learn using the program.
+    - *International and language-friendly*, thanks to the structure, allowing 
+everyone to upload the translation to other languages quickly.
+
+------------------------------------------
+2- HOW THE PROGRAM WORKS?
+------------------------------------------
+    - The program uses PyQt5 as its core to display interfaces and JSON files as
+    local database (lessons, tests, UI translations, configuration files)
+    This allows the program to be completely independant of external servers, 
+    offering an offline app for users.
+    - The learning module is based on tracking on users' reviewed lessons and SRS 
+    (Spaced-Repetition System), paired it with integrated exams, verbs glossary, 
+    and integrated vocabulary for lessons.
+    - ALL translations can be done by: copying the preferred language json file and
+    translating texts, buttons, meanings... etc. The program will check on the language
+    in "config.json" and load the selected one. It's important to notice that all
+    translations must have support for every text found, or the program may crash
+    (notify the user and development team if the program only covers certain parts or lessons)
+
+------------------------------------------
+3- CORE PROGRAMMING PRINCIPLES
+------------------------------------------
+    - *Simplicity Over Cleverness*: Write readable, clear code over complex, 
+    over-engineered abstractions.
+    - *Zero External Dependencies*: Prefer standard libraries where possible 
+    to keep building/compiling trivial.
+    - *Performance & Footprint*: Instant boot time and minimal memory usage. Optimization
+    is a clue core of the program and the reason why Python was selected.
+    - *Integration of comments in code*: Keep in mind there's other programmers working,
+    they also need to understand your code to help you optimize, add or substract. Try to
+    comment of parts of the code to explain. Silly comments are allowed too! 
+
+------------------------------------------
+4- ORGANIZATION AND WORKFLOW
+------------------------------------------
+In the files of the program you will find the next structure you must mantain
+    /data           - Anything related to resources, databases and media (fonts, images...)
+    --> /content    - Refers to the lessons (vocabulary, tests...) and verbs glossary
+        ----> /lessons  - they're stored as "lesson_n" and so on
+    --> /local      - local files that keep the program working (language, fonts...)
+        ----> /fonts    - As the name says, you'll store the fonts here in preferable ".ttf"
+        ----> /images   - Anything related to icons, character images, etc.
+        ----> /languages - Here you find the json files you can use as templates
+    /development    - Here you find the TOS, this manifesto file and control/objective list
+    credits.txt     - Please, if you're using external media (like icons), add them here!
+    main.py         - Here's the base program structure made with PyQt5
+    conjugation.py  - A list of conjugation functions, necessary due to japanese
+    notifier.py     - It helps with the SRS method, executes once per day
+
+
+

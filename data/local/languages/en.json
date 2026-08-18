@@ -1,35 +1,37 @@
-{"text": {
-    "title": "Marugoto A2-1 Learning App",
-    "description": "A learning application for the Marugoto A2-1 course."},
-
-"verbs" : {
-    "1" : "to do",
-    "2" : "to come (back)",
-    "3" : "to be",
-    "4" : "to go",
-    "5" : "to eat",
-    "6" : "to drink",
-    "7" : "to look",
-    "8" : "to hear",
-    "9" : "to talk/speak",
-    "10" : "to read",
-    "11" : "to write",
-    "12" : "to buy",
-    "13" : "to sleep",
-    "14" : "to return home",
-    "15" : "to meet",
-    "16" : "to be late",
-    "17" : "to wait",
-    "18" : "to live (in a place)",
-    "19" : "to work",
-    "20" : "to prepare",
-    "21" : "to become",
-    "22" : "to get lost"
-},
-
-"button": {
-    "start": "Start",
-    "settings": "Settings",
-    "exit": "Exit"
-}
+{
+    "text": {
+        "title": "Marugoto A2-1 Learning App",
+        "description": "A learning application for the Marugoto A2-1 course.",
+        "notification": "It's time to review your lessons :)"
+    },
+    "verbs": {
+        "1": "to do",
+        "2": "to come (back)",
+        "3": "to be",
+        "4": "to go",
+        "5": "to eat",
+        "6": "to drink",
+        "7": "to look",
+        "8": "to hear",
+        "9": "to talk/speak",
+        "10": "to read",
+        "11": "to write",
+        "12": "to buy",
+        "13": "to sleep",
+        "14": "to return home",
+        "15": "to meet",
+        "16": "to be late",
+        "17": "to wait",
+        "18": "to live (in a place)",
+        "19": "to work",
+        "20": "to prepare",
+        "21": "to become",
+        "22": "to get lost",
+        "23": "to be in sight"
+    },
+    "button": {
+        "lessons": "Lessons",
+        "settings": "Settings",
+        "exit": "Exit"
+    }
 }
