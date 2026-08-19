@@ -2,11 +2,11 @@ import json
 
 '''
     For now, it's a simple terminal, but it helps a LOT when it comes to not copy-pastying
-    over and over in the glossary file... I hope it helps, developers!
+    over and over in the verbs file... I hope it helps, developers!
 '''
 
-with open("data/content/glossary.json", 'r', encoding='utf-8') as archivo:
-    glossary_file = json.load(archivo)
+with open("data/content/verbs.json", 'r', encoding='utf-8') as archivo:
+    verbs_file = json.load(archivo)
 
 with open("data/local/config.json", 'r', encoding='utf-8') as archivo:
     config_file = json.load(archivo)
@@ -18,7 +18,7 @@ with open(f"data/local/languages/{language}.json", 'r', encoding='utf-8') as arc
 run = True
 
 while run:
-    print(f"""Greetings to the inserting tool for the glossary file!
+    print(f"""Greetings to the inserting tool for the verbs file!
     You just need to insert the following information:
     1. The verb in dictionary stem (Specifically use kanji)
     2. The kana/reading of the kanji in the verb (飲・む -> の)
@@ -34,9 +34,9 @@ while run:
     masu = input("Insert the masu form of the verb: ")
     translation = input(f"Insert the translation of the verb in {language}: ")
 
-    n = len(glossary_file) + 1
+    n = str(len(verbs_file) + 1)
 
-    glossary_file[str(n)] = {
+    verbs_file[n] = {
         "dict": kanji,
         "kana": kana,
         "group": int(group),
@@ -45,8 +45,8 @@ while run:
 
     language_file["verbs"][str(n)] = translation
 
-    with open("data/content/glossary.json", 'w', encoding='utf-8') as archivo:
-        json.dump(glossary_file, archivo, ensure_ascii=False, indent=4)
+    with open("data/content/verbs.json", 'w', encoding='utf-8') as archivo:
+        json.dump(verbs_file, archivo, ensure_ascii=False, indent=4)
 
     with open(f"data/local/languages/{language}.json", 'w', encoding='utf-8') as archivo:
         json.dump(language_file, archivo, ensure_ascii=False, indent=4)
@@ -63,7 +63,7 @@ while run:
         with open(f"data/local/languages/{language}.json", 'r', encoding='utf-8') as archivo:
             language_file = json.load(archivo)
 
-        language_file["verbs"][str(n)] = translation
+        language_file["verbs"][n] = translation
 
         with open(f"data/local/languages/{language}.json", 'w', encoding='utf-8') as archivo:
             json.dump(language_file, archivo, ensure_ascii=False, indent=4) ## IF YOU DONT PUT THIS IT'S GONNA TURN INTO A DISASTER---

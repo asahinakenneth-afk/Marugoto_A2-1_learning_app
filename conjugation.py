@@ -1,7 +1,7 @@
 import json
 from random import randint
 
-'''To initiate properly, the program checks if a verb can be accessed in the glossary and conjugates it
+'''To initiate properly, the program checks if a verb can be accessed in the verbs and conjugates it
     and if it can, it returns the verb's information, stem forms and let's the program process normally
     if it can't, it returns an error message and the program stops.
 '''
@@ -12,23 +12,23 @@ with open(config_file_path, 'r', encoding='utf-8') as config_file: ## OPENS IT T
     config_data = json.load(config_file)
     language = config_data.get("language", "en")  # Default to "english" if not found
 
-glossary_path = "data/content/glossary.json" 
+verbs_path = "data/content/verbs.json" 
 language_path = f"data/local/languages/{language}.json" ## SETS LANGUAGE FOR TRANSLATION
 
-with open(glossary_path, 'r', encoding='utf-8') as file:
-    glossary = json.load(file)
+with open(verbs_path, 'r', encoding='utf-8') as file:
+    verbs = json.load(file)
 
 with open(language_path, 'r', encoding='utf-8') as file:
     language_data = json.load(file)
 
-print("Basic info loaded successfully. Language:", language, "Glossary entries:", len(glossary))
+print("Basic info loaded successfully. Language:", language, "verbs entries:", len(verbs))
 
 '''VERB CONJUGATION FUNCTIONS'''
 
-def get_verb_info(verb_id, glossary, language_data, language):
+def get_verb_info(verb_id, verbs:json, language_data, language):
     '''
     Here you get the information of the verb you want to use, based on the verb_id,
-    the dedicated glossary and dynamic language.
+    the dedicated verbs and dynamic language.
     It returns a dictionary with the verb's information (meaning, dict_form, dict_form, romanji, group
     dictionary form, masu form, etc...)
     This is mainly used to display the verb's information in the GUI,
@@ -36,12 +36,12 @@ def get_verb_info(verb_id, glossary, language_data, language):
     '''
     id = str(verb_id) # INT TO STRING FOR THE DICTIONARY KEY
 
-    if id not in glossary or id not in language_data["verbs"]: ##IT EXISTS IN GLOSSARY AND LANGUAGE?
-        print(f"Verb ID {id} not found in glossary for language {language}.")
+    if id not in verbs or id not in language_data["verbs"]: ##IT EXISTS IN verbs AND LANGUAGE?
+        print(f"Verb ID {id} not found in verbs for language {language}.")
         return None
 
     ##IT EXISTS SO WE GET THE INFO
-    verb_data = glossary[id]
+    verb_data = verbs[id]
     verb_meaning = language_data["verbs"][id]
     
     verb_info = {
@@ -56,13 +56,13 @@ def get_verb_info(verb_id, glossary, language_data, language):
 
     return verb_info
 
-def verb_to_te(verb_id, glossary, language_data, language):
+def verb_to_te(verb_id, verbs, language_data, language):
     '''
-    This function takes a verb_id, the glossary and the language as input,
+    This function takes a verb_id, the verbs and the language as input,
     and returns the te-form of the verb.
     It uses the verb's group to determine how to conjugate it.
     '''
-    verb_info = get_verb_info(verb_id, glossary, language_data, language)
+    verb_info = get_verb_info(verb_id, verbs, language_data, language)
     
     if not verb_info:
         print(f"Cannot conjugate verb ID {verb_id} because it was not found.")
@@ -105,13 +105,13 @@ def verb_to_te(verb_id, glossary, language_data, language):
 
     return te_form
 
-def verb_to_ta(verb_id, glossary, language_data, language):
+def verb_to_ta(verb_id, verbs, language_data, language):
     '''
-    This function takes a verb_id, the glossary and the language as input,
+    This function takes a verb_id, the verbs and the language as input,
     transforms it to te form, then to ta form (or informal past form) of the verb.
     It returns the ta-form of the verb.
     '''
-    te_form = verb_to_te(verb_id, glossary, language_data, language)
+    te_form = verb_to_te(verb_id, verbs, language_data, language)
     
     if not te_form:
         print(f"Cannot conjugate verb ID {verb_id} to ta-form because te-form was not found.")
@@ -130,13 +130,13 @@ def verb_to_ta(verb_id, glossary, language_data, language):
 
     return ta_form
 
-def masu_to_past(verb_id, glossary, language_data, language):
+def masu_to_past(verb_id, verbs, language_data, language):
     '''
-    This function takes a verb_id, the glossary and the language as input,
+    This function takes a verb_id, the verbs and the language as input,
     and returns the past form of the verb in masu form.
     It uses the verb's masu form to determine its conjugation.
     '''
-    verb_info = get_verb_info(verb_id, glossary, language_data, language)
+    verb_info = get_verb_info(verb_id, verbs, language_data, language)
     
     if not verb_info:
         print(f"Cannot conjugate verb ID {verb_id} because it was not found.")
@@ -151,13 +151,13 @@ def masu_to_past(verb_id, glossary, language_data, language):
 
     return past_masu_form
 
-def verb_to_tai(verb_id, glossary, language_data, language):
+def verb_to_tai(verb_id, verbs, language_data, language):
     '''
-    This function takes a verb_id, the glossary and the language as input,
+    This function takes a verb_id, the verbs and the language as input,
     and returns the tai-form of the verb (or to-wish form)
     It uses the verb's masu form to determine its conjugation.
     '''
-    verb_info = get_verb_info(verb_id, glossary, language_data, language)
+    verb_info = get_verb_info(verb_id, verbs, language_data, language)
     
     if not verb_info:
         print(f"Cannot conjugate verb ID {verb_id} because it was not found.")
@@ -175,13 +175,13 @@ def verb_to_tai(verb_id, glossary, language_data, language):
 '''VERB CONJUGATION TO 
 NEGATIVE FORM FUNCTIONS'''
 
-def masu_to_negative(verb_id, glossary, language_data, language):
+def masu_to_negative(verb_id, verbs, language_data, language):
     '''
-    This function takes a verb_id, the glossary and the language as input,
+    This function takes a verb_id, the verbs and the language as input,
     and returns the negative form of the verb in masu form.
     It uses the verb's masu form to determine its conjugation.
     '''
-    verb_info = get_verb_info(verb_id, glossary, language_data, language)
+    verb_info = get_verb_info(verb_id, verbs, language_data, language)
     
     if not verb_info:
         print(f"Cannot conjugate verb ID {verb_id} because it was not found.")
@@ -196,19 +196,19 @@ def masu_to_negative(verb_id, glossary, language_data, language):
 
     return neg_masu_form
 
-def mashita_to_negative(verb_id, glossary, language_data, language):
+def mashita_to_negative(verb_id, verbs, language_data, language):
     '''
-    This function takes a verb_id, the glossary and the language as input,
+    This function takes a verb_id, the verbs and the language as input,
     and returns the negative form of the verb in past masu form.
     It uses the verb's past masu form to determine its conjugation.
     '''
-    verb_info = get_verb_info(verb_id, glossary, language_data, language)
+    verb_info = get_verb_info(verb_id, verbs, language_data, language)
     
     if not verb_info:
         print(f"Cannot conjugate verb ID {verb_id} because it was not found.")
         return None
 
-    past_masu = masu_to_past(verb_id, glossary, language_data, language)
+    past_masu = masu_to_past(verb_id, verbs, language_data, language)
 
     if past_masu.endswith("ました"):
         negpast_masu_form = past_masu[:-3] + "ませんでした"
@@ -216,13 +216,13 @@ def mashita_to_negative(verb_id, glossary, language_data, language):
     return negpast_masu_form
 
 print("Testing verb conjugation functions...")
-n = randint(1, len(glossary))
-print(get_verb_info(n, glossary, language_data, language))
-print(verb_to_te(n, glossary, language_data, language))
-print(verb_to_ta(n, glossary, language_data, language))
-print(verb_to_tai(n, glossary, language_data, language))
-print(masu_to_negative(n, glossary, language_data, language))
-print(masu_to_past(n, glossary, language_data, language))
-print(mashita_to_negative(n, glossary, language_data, language))
+n = randint(1, len(verbs))
+print(get_verb_info(n, verbs, language_data, language))
+print(verb_to_te(n, verbs, language_data, language))
+print(verb_to_ta(n, verbs, language_data, language))
+print(verb_to_tai(n, verbs, language_data, language))
+print(masu_to_negative(n, verbs, language_data, language))
+print(masu_to_past(n, verbs, language_data, language))
+print(mashita_to_negative(n, verbs, language_data, language))
 
 print("functions.py loaded successfully.")
