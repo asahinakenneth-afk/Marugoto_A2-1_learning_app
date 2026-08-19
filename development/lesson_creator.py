@@ -67,13 +67,15 @@ while run:
 
             if type == "v":
                 id = str(input("Insert the ID of the verb: "))
-                vocabulary_file["verbs"][f"v_{id}"] = id
+                key = len(vocabulary_file["verbs"]) + 1 
+                vocabulary_file["verbs"][f"v_{key}"] = id
 
                 with open(vocabulary, 'w', encoding='utf-8') as archivo:
                     json.dump(vocabulary_file, archivo, ensure_ascii=False, indent=4)
             elif type == "adj":
                 id = str(input("Insert the ID of the adjective: "))
-                vocabulary_file["adjectives"][f"adj_{id}"] = id
+                key = len(vocabulary_file["adjectives"]) + 1
+                vocabulary_file["adjectives"][f"adj_{key}"] = id
 
                 with open(vocabulary, 'w', encoding='utf-8') as archivo:
                     json.dump(vocabulary_file, archivo, ensure_ascii=False, indent=4)   
@@ -99,6 +101,6 @@ while run:
             else: 
                 vocabulary_phase = False
 
-            ''' LESSON PHASE '''
+        ''' LESSON PHASE '''
 
-            '''  TEST PHASE  '''
+        '''  TEST PHASE  '''
