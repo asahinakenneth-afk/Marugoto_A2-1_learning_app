@@ -1,18 +1,8 @@
 {
-    "words": {
-        "w_1": {
-            "kanji": "jsjajs",
-            "kana": "jfjfjf",
-            "type": "n"
+        "words" : {
         },
-        "w_2": {
-            "kanji": "uuu",
-            "kana": "n",
-            "type": "ksks"
+        "verbs" : {
+        },
+        "adjectives" : {
         }
-    },
-    "verbs": {
-        "v_0": "1",
-        "v_1": "3"
-    }
-}
+        }
