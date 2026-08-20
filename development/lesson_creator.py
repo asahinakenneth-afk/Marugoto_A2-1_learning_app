@@ -1,7 +1,7 @@
 from pathlib import Path
 import json
 
-'''  Similar to glossary_insert.py, I made this to help people insert the lessons in the program!
+'''  Similar to insert_tools.py, I made this to help people insert the lessons in the program!
     I wish it had an interface... but anyways, to start it's very good... I think?
 '''
 
@@ -9,7 +9,6 @@ BASE_DIR = Path(__file__).resolve().parent ## just to make sure...
 run = True
 
 while run:
-
     print("Make sure you aren't trying to add a pre-existing lesson" \
           "or all the information WILL be lost (rewritten)!")
     new_lesson = input("Do you want to add a new lesson? (Y/N)").lower()
