@@ -27,7 +27,7 @@ def notification(notification_text):
 
     notifier.AddAction(ToastButton('Alright', 'response=execute'))
     notifier.AddAction(ToastButton('Remind me later', 'response=setlater'))
-    notifier.AddImage(ToastDisplayImage.fromPath("data/local/images/notification.png"))
+    # notifier.AddImage(ToastDisplayImage.fromPath("data/local/images/notification.png"))
 
     toaster.show_toast(notifier)
 

@@ -4,6 +4,11 @@
         "description": "Una aplicación para el curso de Marugoto A2-1 en japonés",
         "notification": "Es hora de repasar tus lecciones! :)"
     },
+    "button": {
+        "lessons": "Lecciones",
+        "settings": "Configuración",
+        "exit": "Salir"
+    },
     "verbs": {
         "1": "hacer",
         "2": "regresar",
@@ -30,9 +35,7 @@
         "23": "poder verse",
         "24": "mostrar"
     },
-    "button": {
-        "lessons": "Lecciones",
-        "settings": "Configuración",
-        "exit": "Salir"
+    "adjectives": {
+        "1": "sweet"
     }
 }

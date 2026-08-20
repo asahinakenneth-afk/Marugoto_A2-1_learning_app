@@ -4,6 +4,11 @@
         "description": "A learning application for the Marugoto A2-1 course.",
         "notification": "It's time to review your lessons :)"
     },
+    "button": {
+        "lessons": "Lessons",
+        "settings": "Settings",
+        "exit": "Exit"
+    },
     "verbs": {
         "1": "to do",
         "2": "to come (back)",
@@ -30,9 +35,7 @@
         "23": "to be in sight",
         "24": "to show"
     },
-    "button": {
-        "lessons": "Lessons",
-        "settings": "Settings",
-        "exit": "Exit"
+    "adjectives": {
+        "1": "sweet"
     }
 }
