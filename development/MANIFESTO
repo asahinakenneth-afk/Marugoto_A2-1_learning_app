@@ -64,7 +64,7 @@ everyone to upload the translation to other languages quickly.
 ------------------------------------------
 In the files of the program you will find the next structure you must mantain
     /data           - Anything related to resources, databases and media (fonts, images...)
-    --> /content    - Refers to the lessons (vocabulary, tests...) and verbs glossary
+    --> /content    - Refers to the lessons (vocabulary, tests...), verbs, particles and adjectives
         ----> /lessons  - they're stored as "lesson_n" and so on
     --> /local      - local files that keep the program working (language, fonts...)
         ----> /fonts    - As the name says, you'll store the fonts here in preferable ".ttf"

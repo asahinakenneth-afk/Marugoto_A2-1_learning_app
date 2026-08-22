@@ -5,6 +5,36 @@ import json
     I wish it had an interface... but anyways, to start it's very good... I think?
 '''
 
+def create_files(vocabulary, lesson, test):
+    vocabulary.touch(exist_ok=True)
+    vocabulary.write_text('''{
+        "words" : {
+        },
+        "verbs" : {
+        },
+        "adjectives" : {
+        }
+        }''')
+    lesson.touch(exist_ok=True)
+    lesson.write_text('''{
+        "title" : 
+        "kanji" : {
+        }
+        "grammar" : {
+        }
+        "conversations" : {
+        }
+        "Readings" : {
+        }
+        "Writting" : {
+        "Questions" : {
+
+        }
+
+        }
+        }''')
+    test.touch(exist_ok=True)
+
 BASE_DIR = Path(__file__).resolve().parent ## just to make sure...
 run = True
 
@@ -27,17 +57,7 @@ while run:
         lesson = path / "lesson.json"
         test = path / "test.json"
 
-        vocabulary.touch(exist_ok=True)
-        vocabulary.write_text('''{
-        "words" : {
-        },
-        "verbs" : {
-        },
-        "adjectives" : {
-        }
-        }''')
-        lesson.touch(exist_ok=True)
-        test.touch(exist_ok=True)
+        create_files(vocabulary, lesson, test)
 
         '''     VOCABULARY PHASE    '''
 
@@ -71,6 +91,7 @@ while run:
 
                 with open(vocabulary, 'w', encoding='utf-8') as archivo:
                     json.dump(vocabulary_file, archivo, ensure_ascii=False, indent=4)
+
             elif type == "adj":
                 id = str(input("Insert the ID of the adjective: "))
                 key = len(vocabulary_file["adjectives"]) + 1
@@ -94,12 +115,13 @@ while run:
                 print(f'''There has been an unexpected error, try to
                 - Determine if you've wrote the type properly (as said above)''')
 
-            repeat = input("Do you wish to add another word? (y/n)").lower()
-            if repeat == "y":
-                vocabulary_phase = True
-            else: 
-                vocabulary_phase = False
+            vocabulary_phase = True if input("Do you wish to add another word? (y/n)").lower() == "y" else False
 
         ''' LESSON PHASE '''
+
+        lesson_phase = True
+
+        while lesson_phase:
+            break
 
         '''  TEST PHASE  '''
