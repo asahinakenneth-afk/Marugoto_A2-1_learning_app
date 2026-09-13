@@ -125,4 +125,7 @@ empty = "not started"
 
 .==========================   MISCELLANOUS/OTHERS   ============================.
 
-
+    Tik tok account and publishment []
+    Create itch.io account []
+    Create Discord server []
+    Search for beta testers for the Alpha []
