@@ -1,0 +1,128 @@
+.=================================================================================.
+.=================================================================================.
+                                CHECKLIST
+.=================================================================================.
+.=================================================================================.
+
+" The following checklist has all the current objectives and function-related
+necessities of the program  "
+
+x = "done/finalized"
+- = "working on it"
+empty = "not started"
+
+.============================   VISUALS/GUI   ====================================.
+
+    fonts supporting english and spanish [x]
+        text [x]
+        titles [x]
+        buttons [x]
+
+    fonts supporting other languages []
+
+    sprites []
+        characters []
+        nouns []
+        verbs []
+        particles []
+
+    dark/light modes [-]
+        Dark/light background colors [x]
+        Buttons style (light mode) [x]
+        Buttons style (dark mode) []
+
+.============================   CONJUGATION TOOlS   ===============================.
+
+    verbs [x]
+        masu stem conjugation [x]
+            past [x]
+            negative [x]
+            past negative [x]
+            tai [x]
+        dictionary stem conjugation [x]
+            te form [x]
+            ta form [x]
+
+    adjectives []
+        i adjectives []
+            past []
+            negative []
+            past negative []
+            te form []
+            adverbial []
+        na adjectives []
+            past []
+            negative []
+            past negative []
+            te form []
+
+.===============================   DEVELOPMENT   ==================================.
+
+    insert tools (TERMINAL ONLY) [-]
+        insert verbs [x]
+        insert adjectives [x]
+        insert particles [-]
+        edition tools []
+            edit verbs []
+            edit adjectives []
+            edit particles []
+        graphic version []
+
+    lesson creator (TERMINAL ONLY) [-]
+        files and directories creator [x]
+        vocabulary phase [x]
+            adding words/nouns [x]
+            adding references to verbs []
+            adding references to adjectives []
+            graphic version []
+        lesson phase []
+            adding title []
+            adding characters/protagonists []
+            conversations []
+            formulas []
+            explanations []
+            examples []
+            excercises []
+                questions []
+                drag-and-drop []
+                particles-test []
+            graphic version []
+        test phase []
+            questions []
+            answers []
+            graphic version []
+    
+    lesson editor 
+        edit vocabulary []
+        edit lesson []
+        edit test [] 
+        graphic version []
+
+.================================   CONTENT   ==================================.
+
+    main screen [-]
+    lessons []
+        1-6 []
+        7-12 []
+        13-18 []
+        19-24 []
+    dictionary 
+        lesson separation []
+        verbs []
+        adjectives[]
+    configuration screen []
+    recommendation screen of apps []
+    about section []
+    about characters []
+
+    notifier for SCR method [-]
+
+    mechanics []
+        drag and drop []
+        choose the right answer []
+        spot the error []
+        remember the formula []
+
+.==========================   MISCELLANOUS/OTHERS   ============================.
+
+

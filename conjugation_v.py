@@ -36,7 +36,7 @@ def get_verb_info(verb_id, verbs:json, language_data, language):
     '''
     id = str(verb_id) # INT TO STRING FOR THE DICTIONARY KEY
 
-    if id not in verbs or id not in language_data["verbs"]: ##IT EXISTS IN verbs AND LANGUAGE?
+    if id not in verbs or id not in language_data["verbs"]: ##IT EXISTS IN verbs AND language?
         print(f"Verb ID {id} not found in verbs for language {language}.")
         return None
 
@@ -214,15 +214,5 @@ def mashita_to_negative(verb_id, verbs, language_data, language):
         negpast_masu_form = past_masu[:-3] + "ませんでした"
 
     return negpast_masu_form
-
-print("Testing verb conjugation functions...")
-n = randint(1, len(verbs))
-print(get_verb_info(n, verbs, language_data, language))
-print(verb_to_te(n, verbs, language_data, language))
-print(verb_to_ta(n, verbs, language_data, language))
-print(verb_to_tai(n, verbs, language_data, language))
-print(masu_to_negative(n, verbs, language_data, language))
-print(masu_to_past(n, verbs, language_data, language))
-print(mashita_to_negative(n, verbs, language_data, language))
 
 print("functions.py loaded successfully.")

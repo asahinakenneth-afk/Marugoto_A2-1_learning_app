@@ -6,12 +6,13 @@
     },
     "button": {
         "lessons": "Lecciones",
+        "dictionary": "Diccionario",
         "settings": "Configuración",
         "exit": "Salir"
     },
     "verbs": {
         "1": "hacer",
-        "2": "regresar",
+        "2": "venir",
         "3": "ser",
         "4": "ir",
         "5": "comer",

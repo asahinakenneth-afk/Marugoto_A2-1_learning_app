@@ -54,7 +54,7 @@ everyone to upload the translation to other languages quickly.
     - *Zero External Dependencies*: Prefer standard libraries where possible 
     to keep building/compiling trivial.
     - *Performance & Footprint*: Instant boot time and minimal memory usage. Optimization
-    is a clue core of the program and the reason why Python was selected.
+    is a clue core of the program to avoid Python's cons.
     - *Integration of comments in code*: Keep in mind there's other programmers working,
     they also need to understand your code to help you optimize, add or substract. Try to
     comment of parts of the code to explain. Silly comments are allowed too! 
@@ -67,10 +67,10 @@ In the files of the program you will find the next structure you must mantain
     --> /content    - Refers to the lessons (vocabulary, tests...), verbs, particles and adjectives
         ----> /lessons  - they're stored as "lesson_n" and so on
     --> /local      - local files that keep the program working (language, fonts...)
-        ----> /fonts    - As the name says, you'll store the fonts here in preferable ".ttf"
+        ----> /fonts    - As the name says, you'll store the fonts here, preferably use ".ttf" format
         ----> /images   - Anything related to icons, character images, etc.
         ----> /languages - Here you find the json files you can use as templates
-    /development    - Here you find the TOS, this manifesto file and control/objective list
+    /development    - Here you find the TOS, this manifesto file and a checklist
     credits.txt     - Please, if you're using external media (like icons), add them here!
     main.py         - Here's the base program structure made with PyQt5
     conjugation.py  - A list of conjugation functions, necessary due to japanese

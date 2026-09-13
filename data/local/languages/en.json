@@ -6,12 +6,13 @@
     },
     "button": {
         "lessons": "Lessons",
+        "dictionary" : "Dictionary",
         "settings": "Settings",
         "exit": "Exit"
     },
     "verbs": {
         "1": "to do",
-        "2": "to come (back)",
+        "2": "to come",
         "3": "to be",
         "4": "to go",
         "5": "to eat",
