@@ -19,6 +19,9 @@ empty = "not started"
         buttons [x]
 
     fonts supporting other languages []
+        japanese []
+            furigana []
+            kanji []
 
     sprites []
         characters []
@@ -114,6 +117,7 @@ empty = "not started"
     recommendation screen of apps []
     about section []
     about characters []
+    help section []
 
     notifier for SCR method [-]
 

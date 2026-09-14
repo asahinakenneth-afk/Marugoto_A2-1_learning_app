@@ -1,12 +1,12 @@
 import sys
 import ctypes
-from PyQt5.QtWidgets import QApplication, QWidget, QSystemTrayIcon, QPushButton, QLabel, QVBoxLayout, QHBoxLayout
-from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QWidget, QSystemTrayIcon, QPushButton, QLabel, QVBoxLayout, QHBoxLayout, QStackedLayout
+from PyQt5.QtCore import Qt, QCoreApplication
 from PyQt5.QtGui import QIcon
 # from PyQt5.QtMultimedia import QSound
 from pyautogui import size
 import json
-from qss_stylesheet import *
+from default_stylesheet import *
 from conjugation_v import *
 
 WIDTH, HEIGHT = size()
@@ -21,6 +21,7 @@ def run():
     app.setApplicationVersion("0.1")
     window = MainWindow()
     app.exec_()
+    sys.exit(app.exec_())
 
 
 class MainWindow(QWidget):
@@ -37,11 +38,16 @@ class MainWindow(QWidget):
         self.language = config.get("language", "en")
         self.is_light_mode = config.get("is_light_mode", True)
 
+        self.main_layout = QVBoxLayout()
+        self.stacked_layout = QStackedLayout()
+        self.main_layout.addLayout(self.stacked_layout)
+        self.setLayout(self.main_layout)
+
         self.set_language()
         self.titles_style, self.text_style, self.button_style = get_stylesheet(self.is_light_mode)
         self.config_window()
-        self.event_handler()
         self.main_menu()
+        self.event_handler()
 
         self.notifier.show()
 
@@ -77,12 +83,14 @@ class MainWindow(QWidget):
         print("Language set to:", self.language, "loaded properly")
 
     def main_menu(self):
-        title_text = QLabel(self.title_tt, self)
-        description = QLabel(self.description_txt, self)
-        lessons_button = QPushButton(self.lessons_btn, self)
-        dictionary_button = QPushButton(self.dict_btn, self)
-        settings_button = QPushButton(self.settings_btn, self)
-        self.exit_button = QPushButton(self.exit_btn, self)
+        self.main_page = QWidget() 
+
+        title_text = QLabel(self.title_tt)
+        description = QLabel(self.description_txt)
+        lessons_button = QPushButton(self.lessons_btn)
+        dictionary_button = QPushButton(self.dict_btn)
+        settings_button = QPushButton(self.settings_btn)
+        self.exit_button = QPushButton(self.exit_btn)
         
         self.apply_style(title_text, self.titles_style)
         self.apply_style(description, self.text_style)
@@ -105,12 +113,12 @@ class MainWindow(QWidget):
         header.addWidget(title_text, alignment=Qt.AlignLeft)
         header.addWidget(description, alignment=Qt.AlignLeft)
 
-        main_layout = QVBoxLayout()
-        main_layout.addLayout(header)
-        main_layout.addLayout(buttons_layout)
-        main_layout.addStretch(0)
+        main_menu = QVBoxLayout(self.main_page)
+        main_menu.addLayout(header)
+        main_menu.addLayout(buttons_layout)
+        main_menu.addStretch(0)
 
-        self.setLayout(main_layout)
+        self.stacked_layout.addWidget(self.main_page)
 
     def apply_style(self, object, style):
         object.setStyleSheet(style)
@@ -118,8 +126,7 @@ class MainWindow(QWidget):
             object.setFixedSize(240, 52)
 
     def event_handler(self):
-        pass
-        #self.start_button.clicked.connect(self.start_button_clicked)
+        self.exit_button.clicked.connect(lambda: QCoreApplication.quit())
 
 print("Starting Marugoto A2-1...")
 run()
