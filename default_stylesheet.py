@@ -65,7 +65,7 @@ def get_stylesheet(is_light_mode):
         frame_style = f"""
         QFrame {{
         background-color: #FF9C8C;
-        border: none;
+        border: 1px solid white;
         height: 5px;
         max-height: 5px;
             }}         

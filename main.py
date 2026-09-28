@@ -4,13 +4,12 @@ from PyQt5.QtWidgets import (
             QApplication, QWidget, QSystemTrayIcon, QPushButton, QLabel, QVBoxLayout, QHBoxLayout, 
             QStackedLayout, QFrame
             )
-from PyQt5.QtCore import Qt, QCoreApplication, pyqtSignal
+from PyQt5.QtCore import Qt, QCoreApplication, pyqtSignal, QTimer
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtMultimedia import QSound
 from pyautogui import size
 import json
 from default_stylesheet import *
-from time import sleep
 # from conjugation_v import *
 
 WIDTH, HEIGHT = size()
@@ -32,17 +31,23 @@ class QHoveredButton(QPushButton):
         when a button is being hovered, it tracks a signal
         this allows you to, by example, hover a button and get a changing description
     '''
-
     hovered = pyqtSignal()
     unhovered = pyqtSignal()
 
+    def __init__(self, text="", parent=None):
+        super().__init__(text, parent)
+
+        sound_file = "data/local/sfx/hover_button.wav"
+        self.hovered_button = QSound(sound_file)
+
     def enterEvent(self, event):
-        self.hovered.emit()
-        super().enterEvent(event)
+            self.hovered.emit()
+            self.hovered_button.play()
+            super().enterEvent(event)
 
     def leaveEvent(self, event):
-        self.unhovered.emit()
-        super().leaveEvent(event)
+            self.unhovered.emit()
+            super().leaveEvent(event)
 
 
 class MainWindow(QWidget):
@@ -66,6 +71,7 @@ class MainWindow(QWidget):
 
         self.set_language()
         self.set_window()
+        self.set_sound()
         titles_style, text_style, button_style, ss_btn_style, frame_style = get_stylesheet(self.is_light_mode)
         self.titles_list = list()
         self.buttons_list = list()
@@ -143,7 +149,7 @@ class MainWindow(QWidget):
         pass
 
     def set_sound(self):
-        self.clicked_button = QSound()
+        self.clicked_button = QSound("data/local/sfx/click_button.wav")
 
     def main_menu(self):
         self.main_page = QWidget() 
@@ -288,7 +294,7 @@ class MainWindow(QWidget):
 
         separator = QFrame()
         separator.setFrameShape(QFrame.HLine)
-        separator.setFrameShadow(QFrame.Plain)
+        separator.setFrameShadow(QFrame.Raised)
 
         self.frames_list.append(separator)
 
@@ -313,9 +319,8 @@ class MainWindow(QWidget):
         print("Applied styles to: ", object)
 
     def change_page(self, index):
-
-        sleep(0.25)
-        self.stacked_layout.setCurrentIndex(index)
+        self.clicked_button.play()
+        QTimer.singleShot(260, lambda: self.stacked_layout.setCurrentIndex(index))
 
     def event_handler(self):
         self.exit_button.clicked.connect(lambda: QCoreApplication.quit())
