@@ -2,6 +2,7 @@
     "text": {
         "title": "Marugoto A2-1 Learning App",
         "title_settings" : "App settings and Preferences",
+        "title_temporizer" : "Temporizer Settings",
         "description": "A learning application for the Marugoto A2-1 course.",
         "notification": "It's time to review your lessons :)",
 
@@ -10,7 +11,9 @@
         "light_mode" : "Set the light mode of the app",
         "dark_mode" : "Set the dark mode of the app",
         "language" : "Set the language of the lessons and interface (Currently only Spanish and English)",
-        "save" : "Save your selected configuration"
+        "save" : "Save your selected configuration",
+
+        "temporizer_coming_soon" : "Our apologies, it seems that this function isn't available at the time, please check if there's a new version supporting it!"
     },
     "button": {
         "lessons": "Lessons",
@@ -25,7 +28,10 @@
         "light_mode": "Light mode",
         "dark_mode": "Dark mode",
         "language" : "Set language",
-        "save" : "Save changes"
+        "save" : "Save changes",
+
+        "set_english" : "English",
+        "set_spanish" : "Spanish"
     },
     "verbs": {
 

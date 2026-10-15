@@ -1,19 +1,43 @@
 {
     "text": {
         "title": "Marugoto A2-1 App de Aprendizaje",
-        "description": "Una aplicación para el curso de Marugoto A2-1 en japonés",
-        "notification": "Es hora de repasar tus lecciones! :)"
+        "title_settings" : "Configuración de la App",
+        "title_temporizer" : "Configuración del temporizador",
+        "title_language": "",
+        "description": "Una aplicación para repasar el curso A2-1 de Marugoto",
+        "notification": "Es hora de repasar tus lecciones :)",
+
+        "config_desc": "Bienvenido al menú de configuraciones, aquí puedes:  ",
+        "temporizer_SRS": "Configurar un recordatorios para repasar o desactivarlos",
+        "light_mode" : "Cambiar al modo claro de la app (tonos claros)",
+        "dark_mode" : "Cambiar al modo oscuro de la app (tonos oscuros)",
+        "language" : "Cambiar el lenguaje de la aplicación, lecciones e interfaz (por ahora, sólo el inglés y el español están disponibles",
+        "save" : "Guardar tu configuración seleccionada",
+
+        "temporizer_coming_soon" : "Disculpe, al parecer esta función no está disponible. Pruebe a buscar una versión más reciente que incluya los recordatorios"
     },
     "button": {
         "lessons": "Lecciones",
-        "dictionary": "Diccionario",
-        "settings": "Configuración",
-        "exit": "Salir"
+        "dictionary" : "Diccionario",
+        "settings": "☰",
+        "back": "↩",
+        "about": "ⓘ",
+        "help": "Ayuda",
+        "exit": "Salir",
+
+        "temporizer_SRS" : "Recordatorios",
+        "light_mode": "Modo claro",
+        "dark_mode": "Modo oscuro",
+        "language" : "Lenguaje",
+        "save" : "Guardar",
+
+        "set_english" : "Inglés",
+        "set_spanish" : "Español"
     },
     "verbs": {
-        
+
     },
     "adjectives": {
-        "1": "sweet"
+        "1": "dulce"
     }
 }

@@ -14,65 +14,69 @@ def get_stylesheet(is_light_mode):
     print("Fonts loaded properly:", TEXT_FONT, TITLES_FONT, BUTTON_FONT)
 
     if is_light_mode:
-        titles_style = f"""color: rgb{TITLES_COLOR_LIGHT}; font-size: 52px; font-family: "{TITLES_FONT}" """
+        master_stylesheet = f"""
 
-        text_style = f"""color: rgb{TEXT_COLOR_LIGHT}; font-size: 24px; font-family: "{TEXT_FONT}" """
+            QWidget#mainWindow {{
+            background-color: rgb{WINDOW_LIGHT};
+            }}
 
-        button_style = f"""
-                QPushButton {{
-        background-color: rgb{BUTTON_LIGHT};
-        color: rgb{TEXT_COLOR_LIGHT};
-        font-family: "{BUTTON_FONT}";
-        font-size: 32px;
-        border-radius: 20px;
-        border-style: solid;
-        border-width: 2px;
-        border-color: #F26B87;
-        padding-top: 5px;
-                    }}
-                QPushButton:hover {{
-        background-color: rgb{BUTTON_HOVER_LIGHT};
-        border-color: #F05143;
-                    }}
-                QPushButton:pressed {{
-        background-color: rgb{BUTTON_PRESSED_LIGHT};
-        border-color: #FF857D;
-                    }}
-                """
-        
-        small_button_style = f"""
-                QPushButton {{
-        background-color: rgb{BUTTON_LIGHT};
-        color: rgb{TEXT_COLOR_LIGHT};
-        font-family: "{BUTTON_FONT}";
-        font-size: 24px;
-        border-radius: 20px;
-        border-style: solid;
-        border-width: 2px;
-        border-color: #F26B87;
-        padding: 5px;
-                    }}
-                QPushButton:hover {{
-        background-color: rgb{BUTTON_HOVER_LIGHT};
-        border-color: #F05143;
-                    }}
-                QPushButton:pressed {{
-        background-color: rgb{BUTTON_PRESSED_LIGHT};
-        border-color: #FF857D;
-                    }}
-                """
-        
-        frame_style = f"""
-        QFrame {{
-        background-color: #FF9C8C;
-        border: 1px solid white;
-        height: 5px;
-        max-height: 5px;
-            }}         
-"""
+            /* --- REGULAR TEXT --- */
+            QLabel {{
+                background: none;
+                background-color: transparent;
+                color: rgb{TEXT_COLOR_LIGHT};
+                font-size: 24px;
+                font-family: "{TEXT_FONT}";
+            }}
+            /* --- TITLES --- */
+            QLabel#title {{
+                background: none;
+                background-color: transparent;
+                color: rgb{TITLES_COLOR_LIGHT};
+                font-size: 52px;
+                font-family: "{TITLES_FONT}";
+            }}
+
+            /* --- SEPARATOR --- */
+            QFrame#separator {{
+                background-color: #FF9C8C;
+                border-bottom: 2px solid white;
+                min-height: 3px;
+            }}
+
+            /* --- BUTTONS --- */
+            QPushButton, QHoveredButton {{
+                background-color: rgb{BUTTON_LIGHT};
+                color: rgb{TEXT_COLOR_LIGHT};
+                font-family: "{BUTTON_FONT}";
+                font-size: 32px;
+                border-radius: 20px;
+                border: 2px solid #F26B87;
+                min-width: 240px;
+                min-height: 52px;
+            }}
+            QPushButton:hover, QHoveredButton:hover {{
+                background-color: rgb{BUTTON_HOVER_LIGHT};
+                border-color: #F05143;
+            }}
+            QPushButton:pressed, QHoveredButton:pressed {{
+                background-color: rgb{BUTTON_PRESSED_LIGHT};
+                border-color: #FF857D;
+            }}
+
+            /* --- SMALL BUTTONS --- */
+            QPushButton#small, QHoveredButton#small {{
+                font-size: 24px;
+                min-width: 52px;
+                max-width: 52px;
+                min-height: 52px;
+                max-height: 52px;
+                border-radius: 20px;
+            }}
+        """
 
     print("Stylesheet loaded successfully.")
-    return titles_style, text_style, button_style, small_button_style, frame_style
+    return master_stylesheet
 
 WINDOW_LIGHT = (255, 192, 184)
 WINDOW_DARK = (22, 6, 3)
